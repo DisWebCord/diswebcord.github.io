@@ -1,18 +1,18 @@
 <script>
-  function save(){
-    localStorage.code = document.getElementById('editor').value;
-  }
-  
-  function load(){
-    document.getElementById('editor').value = (!localStorage.code ? "" : localStorage.code);
-  }
-  
-  function reset(){
-    if(confirm('Are you sure you want to reset ALL of your code?')){
-      document.getElementById('editor').value = null;
-      localStorage.code = null;
+  var Storage = {
+    save: function(){
+      localStorage.code = document.getElementById('editor').value;
+    },
+    load: function(){
+      document.getElementById('editor').value = (!localStorage.code ? "" : localStorage.code);
+    },
+    reset: function(){
+      if(confirm('Are you sure you want to reset ALL of your code?')){
+        document.getElementById('editor').value = null;
+        localStorage.code = null;
+      }
     }
-  }
+  };
 </script>
 
 This is DisWebCord editor.<br><br>
