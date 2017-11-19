@@ -4,11 +4,11 @@
   }
   
   function load(){
-    document.getElementById('editor').innerHTML = localStorage.code;
+    document.getElementById('editor').innerHTML = (!localStorage.code ? "" : localStorage.code);
   }
 </script>
 
 This is DisWebCord editor.<br><br>
-<textarea id="editor" cols="50" rows="10"></textarea>
+<textarea id="editor" cols="50" rows="10"></textarea><br>
 <button onclick="save()">Save</button>
 <button onclick="load()">Load</button>
