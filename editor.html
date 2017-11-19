@@ -1,10 +1,10 @@
 <script>
   function save(){
-    localStorage.code = document.getElementById('editor').innerHTML;
+    localStorage.code = document.getElementById('editor').value;
   }
   
   function load(){
-    document.getElementById('editor').innerHTML = (!localStorage.code ? "" : localStorage.code);
+    document.getElementById('editor').value = (!localStorage.code ? "" : localStorage.code);
   }
 </script>
 
