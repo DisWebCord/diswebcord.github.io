@@ -6,9 +6,16 @@
   function load(){
     document.getElementById('editor').value = (!localStorage.code ? "" : localStorage.code);
   }
+  
+  function reset(){
+    if(confirm('Are you sure you want to reset ALL of your code?')){
+      document.getElementById('editor').value = null;
+      localStorage.code = null;
+    }
 </script>
 
 This is DisWebCord editor.<br><br>
 <textarea id="editor" cols="50" rows="10"></textarea><br>
 <button onclick="save()">Save</button>
 <button onclick="load()">Load</button>
+<button onclick="reset()">Reset</button>
