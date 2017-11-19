@@ -1,1 +1,13 @@
-This is DisWebCord editor.
+<script>
+  function save(){
+    localStorage.code = document.getElementById('editor').innerHTML;
+  }
+  
+  function load(){
+    document.getElementById('editor').innerHTML = localStorage.code;
+  }
+</script>
+
+This is DisWebCord editor.<br><br>
+<textarea id="editor" cols="5" rows="10"></textarea>
+<button onclick="save()">Save</button>
