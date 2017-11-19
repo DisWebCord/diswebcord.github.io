@@ -25,7 +25,9 @@
   var client.destroy == function(){alert('Please start your bot / You must use client as your client variable')}; // Prevent errors while loading code
   
   var Engine = {
-    start: null,
+    start: function(){
+      eval(document.getElementById('editor').value);
+    },
     stop: function(){
       client.destroy(); // Disconnect from Discord
       location.refresh(); // Unload all code to prevent errors
@@ -33,10 +35,13 @@
   };
 </script>
 
-This is DisWebCord editor. Your client variable must be called <i>client</i> or this page will work incorrectly.<br><br>
+This is DisWebCord editor.<br><br>
 <textarea id="editor" cols="50" rows="10"></textarea><br>
 <button onclick="Storage.save()">Save</button>
 <button onclick="Storage.load()">Load</button>
 <button onclick="Storage.reset()">Reset</button><br>
 <button onclick="Engine.start()">Start</button>
-<button onclick="Engine.stop()">Stop</button>
+<button onclick="Engine.stop()">Stop</button><br><br>
+<i><b>Tutorial:</b> Write your code, save it and then start it.<br>
+  Your bot client variable MUST be client, otherwise the program will not work.
+</i>
