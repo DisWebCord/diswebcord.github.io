@@ -22,14 +22,31 @@
 		height: 300px;
 	}
 </style>
+This is DisWebCord editor. (using Ace)<br><br>
+<div id="editor">function start(coding){
+	//now!
+}</div>
+<button onclick="Storage.save()">Save</button>
+<button onclick="Storage.load()">Load</button>
+<button onclick="Storage.reset()">Reset</button><br>
+<button onclick="Engine.start()">Start</button>
+<button onclick="Engine.stop()">Stop</button><br><br>
+<i>
+  <b>Tutorial:</b> Write your code, save it and then start it.<br>
+  <b>Note:</b> To define your client use <code>var client = new Discord.Client();</code> (your variable doesn't need to be called client)
+</i>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" charset="utf-8"></script>
 <script type="text/javascript">
+	var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/monokai");
+	editor.getSession().setMode("ace/mode/javascript");
+	
   var Storage = {
     save: function(){
-      localStorage.code = document.getElementById('editor').value;
+      localStorage.code = editor.getValue();
     },
     load: function(){
-      document.getElementById('editor').value = (!localStorage.code ? "" : localStorage.code);
+	    editor.setValue((!localStorage.code ? "" : localStorage.code)):
     },
     reset: function(){
       if(confirm('Are you sure you want to reset ALL of your code?')){
@@ -48,23 +65,3 @@
     }
   };
 </script>
-
-This is DisWebCord editor. (using Ace)<br><br>
-<textarea id="oldeditor" cols="50" rows="10"></textarea><br>
-<div id="editor">function start(coding){
-	//now!
-}</div>
-<script type="text/javascript">
-	var editor = ace.edit("editor");
-	editor.setTheme("ace/theme/monokai");
-	editor.getSession().setMode("ace/mode/javascript");
-</script>
-<button onclick="Storage.save()">Save</button>
-<button onclick="Storage.load()">Load</button>
-<button onclick="Storage.reset()">Reset</button><br>
-<button onclick="Engine.start()">Start</button>
-<button onclick="Engine.stop()">Stop</button><br><br>
-<i>
-  <b>Tutorial:</b> Write your code, save it and then start it.<br>
-  <b>Note:</b> To define your client use <code>var client = new Discord.Client();</code> (your variable doesn't need to be called client)
-</i>
