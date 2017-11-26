@@ -46,7 +46,7 @@ This is DisWebCord editor. (using Ace)<br><br>
       localStorage.code = editor.getValue();
     },
     load: function(){
-	    editor.setValue((!localStorage.code ? "" : localStorage.code)):
+	    editor.setValue((!localStorage.code ? "" : localStorage.code));
     },
     reset: function(){
       if(confirm('Are you sure you want to reset ALL of your code?')){
