@@ -5,7 +5,11 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 </head>
-
+<style>
+  code {
+    background-color: lightgray;
+  }
+</style>
 <script type="text/javascript">
   var Storage = {
     save: function(){
@@ -27,7 +31,7 @@
       eval(document.getElementById('editor').value);
     },
     stop: function(){
-      window.location.refresh(); // Unload all code to prevent errors
+      window.location.refresh(); // Unload all code to prevent errors & stop the script
     }
   };
 </script>
