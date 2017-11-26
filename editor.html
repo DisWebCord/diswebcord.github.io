@@ -12,7 +12,15 @@
   code {
     background-color: #E8E8E8;
   }
+	#editor { 
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
 </style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
 <script type="text/javascript">
   var Storage = {
     save: function(){
@@ -39,8 +47,16 @@
   };
 </script>
 
-This is DisWebCord editor.<br><br>
+This is DisWebCord editor. (using Ace)<br><br>
 <textarea id="editor" cols="50" rows="10"></textarea><br>
+<div id="editor">function start(coding){
+	//now!
+}</div>
+<script type="text/javascript">
+	var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/monokai");
+	editor.getSession().setMode("ace/mode/javascript");
+</script>
 <button onclick="Storage.save()">Save</button>
 <button onclick="Storage.load()">Load</button>
 <button onclick="Storage.reset()">Reset</button><br>
