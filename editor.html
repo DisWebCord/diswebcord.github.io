@@ -21,16 +21,13 @@
       }
     }
   };
-  
-  var client = {destroy: function(){alert('Please start your bot / You must use client as your client variable')}}; // Prevent errors while loading code
-  
+    
   var Engine = {
     start: function(){
       eval(document.getElementById('editor').value);
     },
     stop: function(){
-      client.destroy(); // Disconnect from Discord
-      location.refresh(); // Unload all code to prevent errors
+      window.location.refresh(); // Unload all code to prevent errors
     }
   };
 </script>
