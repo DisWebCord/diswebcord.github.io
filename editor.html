@@ -35,36 +35,13 @@
 <button onclick="Storage.reset()">Reset</button><br>
 <button onclick="Engine.start()">Start</button>
 <button onclick="Engine.stop()">Stop</button><br><br>
-<pre id="console"></pre><br>
 <i>
   <b>Tutorial:</b> Write your code, save it and then start it.<br>
   <b>Note:</b> To define your client use <code>var client = new Discord.Client();</code> (your variable doesn't need to be called client)
 </i>
+<script src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" charset="utf-8"></script>
 <script type="text/javascript">
-  
-  // Console logging
-  
-  var _log = console.log,
-    _warn = console.warn,
-    _error = console.error;
-  
-  console.log = function() {
-    document.getElementById('console').innerHTML += arguments[0] + '\n';
-    return _log.apply(console, arguments);
-  };
-  
-  console.warn = function() {
-    document.getElementById('console').innerHTML += arguments[0] + '\n';
-    return _warn.apply(console, arguments);
-  };
-  
-  console.error = function() {
-    document.getElementById('console').innerHTML += arguments[0] + '\n';
-    return _error.apply(console, arguments);
-  };
-
-  
 	var editor = ace.edit("editor");
 	editor.setTheme("ace/theme/monokai");
 	editor.getSession().setMode("ace/mode/javascript");
