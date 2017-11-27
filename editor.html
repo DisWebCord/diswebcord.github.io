@@ -63,7 +63,7 @@
   var Engine = {
     started: false,
     start: function(){
-      if(Engine.started) if(!confirm('The client has already started, clicking on YES might result in double events)) return;
+      if(Engine.started) if(!confirm('The client has already started, clicking on YES might result in double events')) return;
 	    try{
         eval(editor.getValue());
         Engine.started = true;
