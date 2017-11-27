@@ -35,7 +35,7 @@
 <button onclick="Storage.reset()">Reset</button><br>
 <button onclick="Engine.start()">Start</button>
 <button onclick="Engine.stop()">Stop</button><br><br>
-<b id="console"></b>
+<pre id="console"></pre><br>
 <i>
   <b>Tutorial:</b> Write your code, save it and then start it.<br>
   <b>Note:</b> To define your client use <code>var client = new Discord.Client();</code> (your variable doesn't need to be called client)
@@ -50,20 +50,19 @@
     _error = console.error;
   
   console.log = function() {
-    //logOfConsole.push({method: 'log', arguments: arguments});
-    document.getElementById('console').innerHTML += arguments;
+    document.getElementById('console').innerHTML += arguments[0] + '\n';
     return _log.apply(console, arguments);
   };
   
-  /*console.warn = function() {
-    logOfConsole.push({method: 'warn', arguments: arguments});
+  console.warn = function() {
+    document.getElementById('console').innerHTML += arguments[0] + '\n';
     return _warn.apply(console, arguments);
   };
   
   console.error = function() {
-    logOfConsole.push({method: 'error', arguments: arguments});
+    document.getElementById('console').innerHTML += arguments[0] + '\n';
     return _error.apply(console, arguments);
-  };*/
+  };
 
   
 	var editor = ace.edit("editor");
