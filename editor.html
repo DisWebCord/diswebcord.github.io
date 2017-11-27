@@ -20,8 +20,13 @@
 		width: 600px;
     height: 300px;
 	}
+	
+  h1 {
+	  display: inline;
+	}
+	
 </style>
-This is DisWebCord editor. (using Ace)<br><br>
+<h1>DisWebCord editor. </h1><i>(using Ace v1.2.9 and Discord.js v11.2.1)<br><br>
 <div id="editor">function start(coding){
 	//now!
 }</div>
@@ -30,12 +35,37 @@ This is DisWebCord editor. (using Ace)<br><br>
 <button onclick="Storage.reset()">Reset</button><br>
 <button onclick="Engine.start()">Start</button>
 <button onclick="Engine.stop()">Stop</button><br><br>
+<b id="console"></b>
 <i>
   <b>Tutorial:</b> Write your code, save it and then start it.<br>
   <b>Note:</b> To define your client use <code>var client = new Discord.Client();</code> (your variable doesn't need to be called client)
 </i>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" charset="utf-8"></script>
 <script type="text/javascript">
+  
+  // Console logging
+  
+  var _log = console.log,
+    _warn = console.warn,
+    _error = console.error;
+  
+  console.log = function() {
+    //logOfConsole.push({method: 'log', arguments: arguments});
+    document.getElementById('console').innerHTML += arguments;
+    return _log.apply(console, arguments);
+  };
+  
+  /*console.warn = function() {
+    logOfConsole.push({method: 'warn', arguments: arguments});
+    return _warn.apply(console, arguments);
+  };
+  
+  console.error = function() {
+    logOfConsole.push({method: 'error', arguments: arguments});
+    return _error.apply(console, arguments);
+  };*/
+
+  
 	var editor = ace.edit("editor");
 	editor.setTheme("ace/theme/monokai");
 	editor.getSession().setMode("ace/mode/javascript");
