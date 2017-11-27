@@ -59,10 +59,18 @@
       }
     }
   };
-    
+  
   var Engine = {
+    started: false,
     start: function(){
-      eval(editor.getValue());
+      if(Engine.started) if(!confirm('The client has already started, clicking on YES might result in double events)) return;
+	    try{
+        eval(editor.getValue());
+        Engine.started = true;
+      }catch(e){
+        console.error(e);
+        Engine.started = false;
+      }
     },
     stop: function(){
       window.location.refresh(); // Unload all code to prevent errors & stop the script
