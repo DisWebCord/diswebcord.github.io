@@ -1,0 +1,20 @@
+body {
+  background-color: #D8D8D8;
+}
+
+code {
+  background-color: #E8E8E8;
+}
+
+#editor { 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 600px;
+  height: 300px;
+}
+
+h1 {
+  display: inline;
+}
