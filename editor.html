@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
   <title>DisWebCord Editor</title>
   <script type="text/javascript" src="discord.11.2.1.min.js"></script>
@@ -7,17 +8,20 @@
   <meta http-equiv="Expires" content="0" />
   <link rel="stylesheet" type="text/css" href="editor.css">
 </head>
-<h1>DisWebCord editor </h1><i>(using Ace v1.2.9 and Discord.js v11.2.1)<br><br>
-<div id="editor"></div>
-<button onclick="Storage.save()">Save</button>
-<button onclick="Storage.load()">Load</button>
-<button onclick="Storage.reset()">Reset</button><br>
-<button onclick="Engine.start()">Start</button>
-<button onclick="Engine.stop()">Stop</button><br><br>
-<i>
-  <b>Tutorial:</b> Write your code, save it and then start it.<br>
-  <b>Note:</b> To define your client use <code>var client = new Discord.Client();</code> (your variable doesn't need to be called client)
-</i>
-<script src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" charset="utf-8"></script>
-<script type="text/javascript" src="editor.js"></script>
+<body>
+  <h1>DisWebCord editor </h1><i>(using Ace v1.2.9 and Discord.js v11.2.1)<br><br>
+  <div id="editor"></div>
+  <button onclick="Storage.save()">Save</button>
+  <button onclick="Storage.load()">Load</button>
+  <button onclick="Storage.reset()">Reset</button><br>
+  <button onclick="Engine.start()">Start</button>
+  <button onclick="Engine.stop()">Stop</button><br><br>
+  <i>
+    <b>Tutorial:</b> Write your code, save it and then start it.<br>
+    <b>Note:</b> To define your client use <code>var client = new Discord.Client();</code> (your variable doesn't need to be called client)
+  </i>
+  <script type="text/javascript" src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" charset="utf-8"></script>
+  <script type="text/javascript" src="editor.js"></script>
+</body>
+</html>
