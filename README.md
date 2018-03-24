@@ -1,2 +1,1 @@
-# diswebcord.github.io
-DisWebCord™
+# This project has been abandoned
