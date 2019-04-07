@@ -2,7 +2,7 @@ const editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/javascript");
 editor.$blockScrolling = Infinity;
-const evalEditor = ace.edit("editor");
+const evalEditor = ace.edit("evalEditor");
 evalEditor.setTheme("ace/theme/monokai");
 evalEditor.getSession().setMode("ace/mode/javascript");
 evalEditor.$blockScrolling = Infinity;
