@@ -2,6 +2,7 @@ const editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/javascript");
 editor.$blockScrolling = Infinity;
+const versionSelect = document.getElementsByTagName('select')[0];
 const Storage = {
   save() {
     localStorage.code = editor.getValue();
@@ -35,16 +36,17 @@ const Engine = {
   newVersion(version) {
     if(Engine.started) return alert('Client must not be running');
     delete window.Discord;
-    document.getElementsByTagName('select')[0].disabled = true;
+    versionSelect.disabled = true;
     document.getElementsByTagName('script')[0].remove();
     const script = document.createElement('script');
     script.src = 'discord.' + version + '.min.js';
     script.addEventListener('load', () => {
-      document.getElementsByTagName('select')[0].disabled = false;
+      versionSelect.disabled = false;
     });
     document.head.appendChild(script);
     localStorage.version = version;
   }
 };
-if(localStorage.version !== document.getElementsByTagName('select')[0].value && localStorage.version !== undefined)
-  Engine.newVersion(localStorage.version);
+if(localStorage.version !== versionSelect.value && localStorage.version !== undefined) {
+  Engine.newVersion(versionSelect.value = localStorage.version);
+}
