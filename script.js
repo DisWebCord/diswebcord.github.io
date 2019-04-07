@@ -2,6 +2,11 @@ const editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/javascript");
 editor.$blockScrolling = Infinity;
+const evalEditor = ace.edit("editor");
+evalEditor.setTheme("ace/theme/monokai");
+evalEditor.getSession().setMode("ace/mode/javascript");
+evalEditor.$blockScrolling = Infinity;
+evalEditor.setValue('// Code written here will be evaluated on the page');
 const versionSelect = document.getElementsByTagName('select')[0];
 const Storage = {
   save() {
