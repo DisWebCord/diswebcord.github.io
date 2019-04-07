@@ -7,6 +7,10 @@ body {
 code {
   background-color: #E8E8E8;
   font-style: normal;
+  color:  black;
+  padding-bottom: 0;
+  border-radius: 4px;
+  padding: 2px;
 }
 
 #editor {
@@ -40,4 +44,8 @@ select {
 
 h1 {
   display: inline;
+}
+
+#console-log-div {
+  border: 1px solid white !important;
 }
