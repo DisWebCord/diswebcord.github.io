@@ -1,5 +1,6 @@
 body {
-  background-color: #D8D8D8;
+  background: #272822;
+  color: white;
   font-family: sans-serif;
 }
 
@@ -14,6 +15,27 @@ code {
 
 #evalEditor {
   height: 200px;
+}
+
+#editor, #evalEditor {
+  border: 1px solid #8F908A;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px 0px rgba(255, 255, 255, .2);
+}
+
+button, select {
+  margin: 2px;
+  width:  4em;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #2F3129;
+  color: #F8F8F2;
+  border: 1px solid rgba(255, 255, 255, .2);
+  padding: 3px;
+}
+
+select {
+  width: auto;
 }
 
 h1 {
