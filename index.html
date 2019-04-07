@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>DisWebCord Editor</title>
-  <script type="text/javascript" src="discord.11.4.2.min.js"></script>
+  <script src="discord.11.4.2.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -21,11 +21,12 @@
   <button onclick="Engine.stop()">Stop</button><br><br>
   <i>
     <b>Tutorial:</b> Write your code, save it and then start it.<br>
-    <b>Note:</b> To define your client use <code>new Discord.Client();</code>
+    <b>Note:</b> The Discord.js import is called <code>Discord</code>
   </i>
-  <div id="eval"></div>
-  <script type="text/javascript" src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" integrity="sha256-U//RSeH3TR3773Rk+1lAufJnRjEaG5LcdbvGV72kHEM=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="script.js"></script>
+  <div id="evalEditor"></div>
+  <button onclick="eval(evalEditor.getValue())">Eval</button>
+  <script src="https://cdn.jsdelivr.net/gh/bahmutov/console-log-div@master/console-log-div.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" integrity="sha256-U//RSeH3TR3773Rk+1lAufJnRjEaG5LcdbvGV72kHEM=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
 </body>
 </html>
