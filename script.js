@@ -23,6 +23,16 @@ const Storage = {
   }
 };
 Storage.load();
+editor.commands.addCommand({
+  name: 'save',
+  bindKey: {
+      win: 'Ctrl-s',
+      mac: 'Command-s'
+  },
+  exec() { 
+    Storage.save();
+  }
+});
 const Engine = {
   started: false,
   start() {
