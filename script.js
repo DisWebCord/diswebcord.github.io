@@ -43,7 +43,7 @@ const container = new Container();
 if(localStorage.version) versionSelect.value = localStorage.version;
 versionSelect.onchange = () => {
   versionSelect.disabled = true;
-  container.setDiscordJS(versionSelect.value);
+  container.setDiscordJS(versionSelect.value)
     .then(() => versionSelect.disabled = false)
     .catch(e => 'Failed to load Discord.js: ' + e);
 };
