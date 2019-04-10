@@ -24,6 +24,7 @@ class Container {
       this.script.src = 'discord.' + version + '.min.js';
       this.script.onload = resolve;
       this.script.onerror = reject;
+      this.iframe.contentDocument.head.appendChild(this.script);
     });
   }
   run(code) {
