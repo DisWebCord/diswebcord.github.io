@@ -2,11 +2,10 @@
 <html>
 <head>
   <title>DisWebCord Editor</title>
-  <script src="discord.11.4.2.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1>DisWebCord editor </h1><i>(using Ace v1.2.9 and Discord.js</i> <select onchange="Engine.newVersion(this.value)"><i>)</i>
+  <h1>DisWebCord editor </h1><i>(using Ace v1.2.9 and Discord.js</i> <select onchange="container.setDiscordJS(this.value)"><i>)</i>
     <option value="11.2.1">v11.2.1</option>
     <option value="11.3.1">v11.3.1</option>
     <option value="11.4.2" selected>v11.4.2 (stable)</option>
@@ -24,7 +23,7 @@
     <b>Note:</b> The Discord.js import is called <code>Discord</code>
   </i>
   <div id="evalEditor"></div>
-  <button onclick="eval(evalEditor.getValue())">Eval</button>
+  <button onclick="container.run(evalEditor.getValue())">Eval</button>
   <script src="https://cdn.jsdelivr.net/gh/bahmutov/console-log-div@master/console-log-div.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" integrity="sha256-U//RSeH3TR3773Rk+1lAufJnRjEaG5LcdbvGV72kHEM=" crossorigin="anonymous"></script>
   <script src="script.js"></script>
