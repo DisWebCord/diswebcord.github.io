@@ -38,14 +38,14 @@ class Container {
   }
 };
 const container = new Container();
-versionSelect.disabled = true;
 if(localStorage.version) versionSelect.value = localStorage.version;
-container.setDiscordJS(versionSelect.value)
-  .then(() => versionSelect.disabled = false)
-  .catch(e => 'Failed to load Discord.js: ' + e);
 versionSelect.onchange = () => {
+  versionSelect.disabled = true;
   container.setDiscordJS(versionSelect.value);
+    .then(() => versionSelect.disabled = false)
+    .catch(e => 'Failed to load Discord.js: ' + e);
 };
+versionSelect.onchange();
 const Storage = {
   save() {
     localStorage.code = editor.getValue();
