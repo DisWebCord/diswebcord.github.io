@@ -1,5 +1,5 @@
 # DisWebCord
-A simple code testing tool (not ment for hosting) for Discord.js bots.
+A simple Discord.js code testing tool (not ment for hosting) for Discord bots.
 
 ### Why?
 Evaluating code on a production bot is not so smart, so I made this tool to quickly test stuff right in the browser without creating any files or clutter.
@@ -10,7 +10,3 @@ Evaluating code on a production bot is not so smart, so I made this tool to quic
 - Console on the page
 - JavaScript eval tool and editor with syntax highlighting
 - Customizable, all variables can be accessed from the editor and eval box
-
-### Disadvantages
-- Refresh is needed to stop the bot (a solution is being worked on)
-- It is not possible to properly execute code twice, the eval box will need to be used or refresh (solution coming soon)
