@@ -8,6 +8,40 @@ evalEditor.getSession().setMode("ace/mode/javascript");
 evalEditor.$blockScrolling = Infinity;
 evalEditor.setValue('// Code written here will be evaluated on the page');
 const versionSelect = document.getElementsByTagName('select')[0];
+class Container {
+  constructor() {
+    this.iframe = document.createElement('iframe');
+    document.head.appendChild(this.iframe);
+  }
+  setDiscordJS(version) {
+    this.version = version;
+    return new Promise((resolve, reject) => {
+      if(this.script) {
+        this.script.remove();
+        delete window.Discord;
+      }
+      this.script = document.createElement('script');
+      this.script.src = 'discord.' + version + '.min.js';
+      this.script.onload = resolve;
+      this.script.onerror = reject;
+    });
+  }
+  run(code) {
+    this.iframe.contentWindow.eval(code);
+  }
+  reload() {
+    return new Promise((resolve, reject) => {
+      this.iframe.contentWindow.location.reload();
+      this.setDiscordJS(this.version).then(resolve).catch(reject);
+    });
+  }
+};
+const container = new Container();
+versionSelect.disabled = true;
+container.setDiscordJS(localStorage.version || (localStorage.version = versionSelect.value)).then(() => versionSelect.disabled = false);
+versionSelect.onchange = () => {
+  container.setDiscordJS(versionSelect.value);
+};
 const Storage = {
   save() {
     localStorage.code = editor.getValue();
@@ -17,8 +51,8 @@ const Storage = {
   },
   reset() {
     if(confirm('Are you sure?')) {
-      editor.setValue(null);
-      localStorage.code = null;
+      editor.setValue('');
+      delete localStorage.code;
     }
   }
 };
@@ -36,9 +70,12 @@ editor.commands.addCommand({
 const Engine = {
   started: false,
   start() {
-    if(Engine.started) if(!confirm('The client has already started, clicking on YES might result in double instances')) return;
+    if(Engine.started) container.reload().then(Engine.actuallyStart);
+    else Engine.actuallyStart();
+  },
+  actuallyStart() {
     try {
-      eval(editor.getValue());
+      container.run(editor.getValue());
       Engine.started = true;
     } catch(e) {
       console.error(e);
@@ -46,22 +83,6 @@ const Engine = {
     }
   },
   stop() {
-    location.reload();
-  },
-  newVersion(version) {
-    if(Engine.started) return alert('Client must not be running');
-    delete window.Discord;
-    versionSelect.disabled = true;
-    document.getElementsByTagName('script')[0].remove();
-    const script = document.createElement('script');
-    script.src = 'discord.' + version + '.min.js';
-    script.addEventListener('load', () => {
-      versionSelect.disabled = false;
-    });
-    document.head.appendChild(script);
-    localStorage.version = version;
+    container.reload();
   }
 };
-if(localStorage.version !== versionSelect.value && localStorage.version !== undefined) {
-  Engine.newVersion(versionSelect.value = localStorage.version);
-}
