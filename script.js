@@ -1,10 +1,10 @@
-const editor = ace.edit("editor");
-editor.setTheme("ace/theme/monokai");
-editor.getSession().setMode("ace/mode/javascript");
+const editor = ace.edit('editor');
+editor.setTheme('ace/theme/monokai');
+editor.getSession().setMode('ace/mode/javascript');
 editor.$blockScrolling = Infinity;
-const evalEditor = ace.edit("evalEditor");
-evalEditor.setTheme("ace/theme/monokai");
-evalEditor.getSession().setMode("ace/mode/javascript");
+const evalEditor = ace.edit('evalEditor');
+evalEditor.setTheme('ace/theme/monokai');
+evalEditor.getSession().setMode('ace/mode/javascript');
 evalEditor.$blockScrolling = Infinity;
 evalEditor.setValue('// Code written here will be evaluated on the page');
 const versionSelect = document.getElementsByTagName('select')[0];
@@ -48,21 +48,15 @@ versionSelect.onchange = () => {
     .catch(e => 'Failed to load Discord.js: ' + e);
 };
 versionSelect.onchange();
-const Storage = {
+const storage = {
   save() {
     localStorage.code = editor.getValue();
   },
   load() {
     editor.setValue(localStorage.code || '');
-  },
-  reset() {
-    if(confirm('Are you sure?')) {
-      editor.setValue('');
-      delete localStorage.code;
-    }
   }
 }
-Storage.load();
+storage.load();
 editor.commands.addCommand({
   name: 'save',
   bindKey: {
@@ -70,7 +64,7 @@ editor.commands.addCommand({
       mac: 'Command-s'
   },
   exec() { 
-    Storage.save();
+    storage.save();
   }
 });
 const Engine = {
@@ -92,3 +86,19 @@ const Engine = {
     container.reload();
   }
 };
+document.getElementById('save').onclick = storage.save;
+document.getElementById('load').onclick = storage.load;
+document.getElementById('reset').onclick = () => {
+  if(confirm('Are you sure?')) {
+    editor.setValue('');
+    delete localStorage.code;
+    Engine.stop();
+  }
+};
+document.getElementById('start').onclick = () => {
+  Engine.start();
+  if(Engine.started) document.getElementById('start').innerText = 'Restart';
+}
+document.getElementById('stop').onclick = Engine.stop;
+document.getElementById('eval').onclick = () => container.run(evalEditor.getValue());
+document.getElementById('clear').onclick = () => evalEditor.setValue('');
