@@ -5,12 +5,12 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1>DisWebCord editor </h1><i>(using Ace v1.2.9 and Discord.js</i> <select onchange="container.setDiscordJS(this.value)"><i>)</i>
+  <h1>DisWebCord editor </h1><i>(using Ace v1.2.9 and Discord.js</i> <select>
     <option value="11.2.1">v11.2.1</option>
     <option value="11.3.1">v11.3.1</option>
     <option value="11.4.2" selected>v11.4.2 (stable)</option>
     <option value="master">master (b5df860)</option>
-  </select>
+  </select><i>)</i>
   <br><br>
   <div id="editor"></div>
   <button onclick="Storage.save()">Save</button>
