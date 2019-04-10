@@ -33,7 +33,9 @@ class Container {
   reload() {
     return new Promise((resolve, reject) => {
       this.iframe.contentWindow.location.reload();
-      this.setDiscordJS(this.version).then(resolve).catch(reject);
+      this.iframe.onload = () => {
+        this.setDiscordJS(this.version).then(resolve).catch(reject);
+      };
     });
   }
 };
@@ -59,7 +61,7 @@ const Storage = {
       delete localStorage.code;
     }
   }
-};
+}
 Storage.load();
 editor.commands.addCommand({
   name: 'save',
